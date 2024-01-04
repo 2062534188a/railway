@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.railway.mapper.RouteMapper">
+
+    <resultMap id="BaseResultMap" type="com.railway.entity.Route">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="trainNum" column="train_num" jdbcType="VARCHAR"/>
+            <result property="trainStops" column="train_Stops" jdbcType="VARCHAR"/>
+            <result property="trainArrivalTime" column="train_arrival_time" jdbcType="TIMESTAMP"/>
+            <result property="trainIssuedTime" column="train_issued_time" jdbcType="TIMESTAMP"/>
+            <result property="trainResidenceTime" column="train_residence_time" jdbcType="INTEGER"/>
+            <result property="trainLate" column="train_late" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,train_num,train_Stops,
+        train_arrival_time,train_issued_time,train_residence_time,
+        train_late
+    </sql>
+</mapper>

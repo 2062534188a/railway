@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.railway.mapper.TrainMapper">
+
+    <resultMap id="BaseResultMap" type="com.railway.entity.Train">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="trainNum" column="train_num" jdbcType="VARCHAR"/>
+            <result property="trainType" column="train_type" jdbcType="TINYINT"/>
+            <result property="trainBusinessSeats" column="train_business_seats" jdbcType="INTEGER"/>
+            <result property="trainBusinessSeatsPrice" column="train_business_seats_price" jdbcType="INTEGER"/>
+            <result property="trainSuperiorSeats" column="train_superior_seats" jdbcType="INTEGER"/>
+            <result property="trainSuperiorSeatsPrice" column="train_superior_seats_price" jdbcType="INTEGER"/>
+            <result property="trainFirstSeats" column="train_first_seats" jdbcType="INTEGER"/>
+            <result property="trainFirstSeatsPrice" column="train_first_seats_price" jdbcType="INTEGER"/>
+            <result property="trainSecondSeats" column="train_second_seats" jdbcType="INTEGER"/>
+            <result property="trainSecondSeatsPrice" column="train_second_seats_price" jdbcType="INTEGER"/>
+            <result property="trainState" column="train_state" jdbcType="INTEGER"/>
+            <result property="trainServiceLife" column="train_service_life" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,train_num,train_type,
+        train_business_seats,train_business_seats_price,train_superior_seats,
+        train_superior_seats_price,train_first_seats,train_first_seats_price,
+        train_second_seats,train_second_seats_price,train_state,
+        train_service_life
+    </sql>
+</mapper>

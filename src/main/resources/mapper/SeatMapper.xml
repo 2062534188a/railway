@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.railway.mapper.SeatMapper">
+
+    <resultMap id="BaseResultMap" type="com.railway.entity.Seat">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="trainNum" column="train_num" jdbcType="VARCHAR"/>
+            <result property="carriageNumber" column="carriage_number" jdbcType="INTEGER"/>
+            <result property="carriageType" column="carriage_type" jdbcType="INTEGER"/>
+            <result property="rowASeat" column="row_a_seat" jdbcType="INTEGER"/>
+            <result property="rowBSeat" column="row_b_seat" jdbcType="INTEGER"/>
+            <result property="rowCSeat" column="row_c_seat" jdbcType="INTEGER"/>
+            <result property="rowDSeat" column="row_d_seat" jdbcType="INTEGER"/>
+            <result property="rowESeat" column="row_e_seat" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,train_num,carriage_number,
+        carriage_type,row_a_seat,row_b_seat,
+        row_c_seat,row_d_seat,row_e_seat
+    </sql>
+</mapper>

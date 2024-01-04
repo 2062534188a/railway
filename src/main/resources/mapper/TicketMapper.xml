@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.railway.mapper.TicketMapper">
+
+    <resultMap id="BaseResultMap" type="com.railway.entity.Ticket">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <result property="ticketNumber" column="ticket_number" jdbcType="VARCHAR"/>
+            <result property="trainNum" column="train_num" jdbcType="VARCHAR"/>
+            <result property="seating" column="seating" jdbcType="TINYINT"/>
+            <result property="carriageNumber" column="carriage_number" jdbcType="INTEGER"/>
+            <result property="seatNumber" column="seat_number" jdbcType="INTEGER"/>
+            <result property="rowSeat" column="row_seat" jdbcType="INTEGER"/>
+            <result property="orderStatus" column="order_status" jdbcType="INTEGER"/>
+            <result property="departurePoint" column="departure_point" jdbcType="VARCHAR"/>
+            <result property="targetPoint" column="target_point" jdbcType="VARCHAR"/>
+            <result property="departureTime" column="departure_time" jdbcType="TIMESTAMP"/>
+            <result property="arrivalTime" column="arrival_time" jdbcType="TIMESTAMP"/>
+            <result property="bookingDate" column="booking_date" jdbcType="TIMESTAMP"/>
+            <result property="trainLate" column="train_late" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,ticket_number,
+        train_num,seating,carriage_number,
+        seat_number,row_seat,order_status,
+        departure_point,target_point,departure_time,
+        arrival_time,booking_date,train_late
+    </sql>
+</mapper>

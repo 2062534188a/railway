@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.railway.mapper.VipMapper">
+
+    <resultMap id="BaseResultMap" type="com.railway.entity.Vip">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="vipLevelName" column="vip_level_name" jdbcType="VARCHAR"/>
+            <result property="vipLevelNum" column="vip_level_num" jdbcType="INTEGER"/>
+            <result property="vipStarexperiencevalue" column="vip_starExperienceValue" jdbcType="BIGINT"/>
+            <result property="vipEndexperiencevalue" column="vip_endExperienceValue" jdbcType="BIGINT"/>
+            <result property="vipLevelDiscount" column="vip_level_discount" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,vip_level_name,vip_level_num,
+        vip_starExperienceValue,vip_endExperienceValue,vip_level_discount
+    </sql>
+</mapper>

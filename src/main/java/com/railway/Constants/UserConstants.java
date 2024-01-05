@@ -11,5 +11,5 @@ public class UserConstants {
 
     public static final String USER_LOGIN_SUCCESS="登录成功!";
 
-    public static final String USER_LOGIN_STATUS_ERROR="状态异常!";
+    public static final String USER_LOGIN_STATUS_ERROR="账号状态异常!请联系管理员";
 }

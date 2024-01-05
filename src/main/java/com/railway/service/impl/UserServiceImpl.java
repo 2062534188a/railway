@@ -53,10 +53,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (user==null){
             return Result.error(UserConstants.USER_NOTFOUND);
         }
+        if (user.getUserPermissions()==-1||user.getUserPermissions()==-2){
+            //账号被封禁或异常 不返回token
+            return Result.success(UserConstants.USER_LOGIN_STATUS_ERROR);
+        }
         //构建jwt令牌
         HashMap<String, Object> map = new HashMap<>();
         map.put("userId",user.getUserId());
-        map.put("userType",user.getUserType());
+        map.put("user_permissions",user.getUserPermissions());
         String jwt = JwtUtil.createJwt(map);
         //返回jwt令牌
         return Result.success(UserConstants.USER_LOGIN_SUCCESS,jwt);

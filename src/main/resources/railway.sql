@@ -149,7 +149,7 @@ CREATE TABLE `railway_order`
 (
     `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键Id',
     `user_id` VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户id' ,
-    `order_price` DECIMAL(20,2) COMMENT '车票价格',
+    `order_price` DECIMAL(20,2) COMMENT '订单金额',
     `order_sn` varchar(64) COLLATE utf8mb4_unicode_ci  DEFAULT NULL COMMENT '订单号',
     `user_id_name` VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '真实姓名',
     `user_id_number` VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '身份证号',
@@ -165,6 +165,7 @@ CREATE TABLE `railway_order`
 CREATE TABLE `railway_ticket_refund`
 (
     `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键Id',
+    `user_id` VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户id',
     `order_id` bigint(20) UNSIGNED NOT NULL COMMENT '关联的订单Id',
     `refund_amount` DECIMAL(20,2) COMMENT '退款金额',
     `refund_reason` VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '退款原因',

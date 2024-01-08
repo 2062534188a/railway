@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface UserService extends IService<User> {
     /**
-     * 登录接口
+     * 用户登录
      * @param loginMsg 用户名/手机号/邮箱
      * @param password 密码
      * @param loginMethod 登录方式 0:用户名 1:手机号 2:邮箱
@@ -26,4 +26,16 @@ public interface UserService extends IService<User> {
      * @return 注册验证回调
      */
     Result register(UserRegisterDTO userRegisterDTO);
+
+    /**
+     * 获取个人信息
+     * @return 个人信息实体类
+     */
+    Result queryMyUserData();
+
+    /**
+     * 查询用户数据
+     * @return 用户数据
+     */
+    Result queryUserData();
 }

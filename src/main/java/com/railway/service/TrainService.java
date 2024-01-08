@@ -1,5 +1,6 @@
 package com.railway.service;
 
+import com.railway.Utils.Result;
 import com.railway.entity.Train;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -10,4 +11,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface TrainService extends IService<Train> {
 
+    /**
+     * 查询列车类型接口
+     * @return 列车类型实体类
+     */
+    Result queryTrainType();
 }

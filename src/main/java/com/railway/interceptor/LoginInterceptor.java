@@ -17,28 +17,28 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //获取Token
-//        jwt = request.getHeader("Authorization");
-//        if (StrUtil.isBlank(jwt)) {
-//            //Token为空 无权访问页面
-//            response.setStatus(400);
-//            System.out.println("Token为空");
-//            return true;
-//
-//        }
-//
-//        //解析Token
-//        try {
-//            //检查是否存在过期或者篡改
-//            claims = JwtUtil.parser(jwt);
-//            //获取载荷中的用户ID
-//            String userId = (String) claims.get("userId");
-//            //将用户ID放入线程数组
-//            ThreadLocalUtil.saveUser(userId);
-//        }catch (Exception e){
-//            //jwt令牌验证失败
-//            response.setStatus(400);
-//            return false;
-//        }
+        jwt = request.getHeader("Authorization");
+        if (StrUtil.isBlank(jwt)) {
+            //Token为空 无权访问页面
+            response.setStatus(400);
+            System.out.println("Token为空");
+            return true;
+
+        }
+
+        //解析Token
+        try {
+            //检查是否存在过期或者篡改
+            claims = JwtUtil.parser(jwt);
+            //获取载荷中的用户ID
+            String userId = (String) claims.get("userId");
+            //将用户ID放入线程数组
+            ThreadLocalUtil.saveUser(userId);
+        }catch (Exception e){
+            //jwt令牌验证失败
+            response.setStatus(400);
+            return false;
+        }
         return true;
     }
 

@@ -1,5 +1,6 @@
 package com.railway.service;
 
+import com.railway.Utils.Result;
 import com.railway.entity.Vip;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -10,4 +11,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface VipService extends IService<Vip> {
 
+    /**
+     * 查询会员信息
+     * @return 会员信息
+     */
+    Result queryMyVipInformation();
 }

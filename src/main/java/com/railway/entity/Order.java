@@ -29,7 +29,7 @@ public class Order implements Serializable {
     private String userId;
 
     /**
-     * 车票价格
+     * 订单金额
      */
     @TableField(value = "order_price")
     private BigDecimal orderPrice;

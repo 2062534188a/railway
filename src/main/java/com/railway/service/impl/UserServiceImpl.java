@@ -4,10 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.railway.Constants.UserConstants;
 import com.railway.DTO.UserRegisterDTO;
-import com.railway.Utils.AgeUtil;
-import com.railway.Utils.JwtUtil;
-import com.railway.Utils.MD5Util;
-import com.railway.Utils.Result;
+import com.railway.Utils.*;
+import com.railway.VO.TicketVO;
+import com.railway.VO.UserVO;
+import com.railway.entity.Ticket;
 import com.railway.entity.User;
 import com.railway.service.UserService;
 import com.railway.mapper.UserMapper;
@@ -15,9 +15,12 @@ import io.swagger.models.auth.In;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -28,6 +31,7 @@ import java.util.UUID;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     implements UserService{
+
     @Override
     public Result login(String loginMsg, String password, Integer loginMethod){
         if (loginMethod==null){
@@ -88,6 +92,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             return save(user)? Result.success(UserConstants.USER_SUCCESS_REGISTER,"true"): Result.error(UserConstants.USER_ERROR_REGISTER);
 
 
+    }
+
+    @Override
+    public Result queryMyUserData() {
+        //获取用户ID
+        String userId = ThreadLocalUtil.getUser().toString();
+        //获取用户数据
+        User user = getOne(new QueryWrapper<User>().eq("user_id",userId));
+        UserVO userVO=new UserVO();
+        //对传回数据进行封装
+        BeanUtils.copyProperties(user,userVO);
+        return Result.success(userVO);
+    }
+
+    @Override
+    public Result queryUserData() {
+        //获取用户数据
+        List<User> users = list();
+        if (users == null||users.size()==0) {
+            return Result.success(null);
+
+        }
+
+        //对传回数据进行封装
+        return Result.success(users);
     }
 
 }

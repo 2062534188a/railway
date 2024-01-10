@@ -7,7 +7,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 车票退票信息表
@@ -15,12 +18,19 @@ import lombok.Data;
  */
 @TableName(value ="railway_ticket_refund")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TicketRefund implements Serializable {
     /**
      * 主键Id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
+    /**
+     * 主键Id
+     */
+    @TableId(value = "user_id")
+    private String  userId;
 
     /**
      * 关联的订单Id

@@ -46,7 +46,7 @@ CREATE TABLE `railway_user`  (
 CREATE INDEX user_name_index ON railway_user (user_name(20),user_pwd(20));
 
 # 测试数据
-INSERT INTO `railway_user` VALUES (null,'45bfb2523e3ecf578c351bbaab54c297','admin','21232F297A57A5A743894A0E4A801FC3','sugiyamar',020686321821298812,null,957,'(116) 621 9100',1,'rinsugiyama@outlook.com',1,0,0,0,0,0,'251.119.37.18','2005-01-19','2023-12-01 19:38:19','2023-12-01 19:57:39');
+INSERT INTO `railway_user` VALUES (null,'45bfb2523e3ecf578c351bbaab54c297','admin1','e00cf25ad42683b3df678c61f42c6bda','sugiyamar',020686321821298812,null,957,'(116) 621 9100',1,'rinsugiyama@outlook.com',1,0,1,3000,0,0,'251.119.37.18','2005-01-19','2023-12-01 19:38:19','2023-12-01 19:57:39');
 
 
 -- vip等级表
@@ -94,7 +94,7 @@ create index user_id_index on railway_train (train_num);
 CREATE TABLE `railway_seat`
 (
     `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键Id',
-    `train_num` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE COMMENT '列车编号',
+    `train_num` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL  COMMENT '列车编号',
     `carriage_number` int(3) COMMENT '车厢号',
     `carriage_type` int(3) NOT NULL COMMENT '车厢类型', #0:商务 1：特等 2：一等 3：二等
     `row_a_seat` int(3) COMMENT '已预订的A列座位',
@@ -104,13 +104,19 @@ CREATE TABLE `railway_seat`
     `row_e_seat`  int(3) COMMENT '已预订的E列座位',
     PRIMARY KEY (`id`) USING BTREE
 )ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci row_format=DYNAMIC COMMENT '列车座位表';
+INSERT INTO railway_seat (train_num, carriage_number,  carriage_type, row_a_seat, row_b_seat,row_c_seat,row_d_seat,row_e_seat) VALUES
+                        ('T001', 1, 0, 0, 0, 0,0,0),('T001', 2, 1, 0, 0, 0,0,0),
+                        ('T001', 3, 2, 0, 0, 0,0,0),('T001', 4, 2, 0, 0, 0,0,0),
+                        ('T001', 5, 3, 0, 0, 0,0,0),('T001', 6, 3, 0, 0, 0,0,0),
+                        ('T001', 7, 3, 0, 0, 0,0,0),('T001', 8, 3, 0, 0, 0,0,0),
+                        ('T001', 9, 3, 0, 0, 0,0,0),('T001', 10,3, 0, 0, 0,0,0),
+                        ('T001', 11,3, 0, 0, 0,0,0),('T001', 12,3, 0, 0, 0,0,0);
 
--- 列车路线表
 
 CREATE TABLE `railway_route`
 (
     `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键Id',
-    `train_num` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE COMMENT '列车编号',
+    `train_num` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL  COMMENT '列车编号',
     `train_Stops` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '站点',
     `train_arrival_time` TIMESTAMP NOT NULL COMMENT '预计到达时间',
     `train_issued_time` TIMESTAMP NOT NULL COMMENT '预计出发时间',
@@ -119,6 +125,20 @@ CREATE TABLE `railway_route`
     PRIMARY KEY (`id`) USING BTREE
 
 )ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC COMMENT '列车路线表';
+
+
+INSERT INTO railway_route (train_num, train_Stops, train_arrival_time, train_issued_time, train_residence_time, train_late) VALUES
+        ('T001', '站点A', '2024-01-09 08:00:00', '2024-01-09 07:45:00', 15, 5),
+        ('T001', '站点B', '2024-01-09 09:30:00', '2024-01-09 09:15:00', 20, 0),
+        ('T001', '站点C', '2024-01-09 11:00:00', '2024-01-09 10:45:00', 25, 10),
+        ('T001', '站点D', '2024-01-09 12:30:00', '2024-01-09 12:15:00', 18, 3),
+        ('T001', '站点E', '2024-01-09 14:00:00', '2024-01-09 13:45:00', 22, 8),
+
+        ('T002', '站点A', '2024-01-09 09:00:00', '2024-01-09 08:45:00', 15, 2),
+        ('T002', '站点B', '2024-01-09 10:30:00', '2024-01-09 10:15:00', 22, 0),
+        ('T002', '站点C', '2024-01-09 12:00:00', '2024-01-09 11:45:00', 18, 5),
+        ('T002', '站点D', '2024-01-09 13:30:00', '2024-01-09 13:15:00', 20, 0),
+        ('T002', '站点E', '2024-01-09 15:00:00', '2024-01-09 14:45:00', 25, 12);
 
 -- 车票信息表
 
@@ -142,6 +162,20 @@ CREATE TABLE `railway_ticket`
     PRIMARY KEY (`id`) USING BTREE,
     UNIQUE (`ticket_number`)
 )ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC COMMENT '车票信息表';
+
+INSERT INTO railway_ticket (user_id, ticket_number, train_num, seating, carriage_number, seat_number, row_seat, order_status, departure_point, target_point, departure_time, arrival_time, booking_date, train_late)
+VALUES
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T001001', 'T001', 0, 1, 1, 1, 2, '站点A', '站点B', '2024-01-09 08:00:00', '2024-01-09 09:30:00', '2024-01-09 07:30:00', 5),
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T001002', 'T001', 1, 2, 3, 2, 1, '站点B', '站点C', '2024-01-09 09:30:00', '2024-01-09 11:00:00', '2024-01-09 09:00:00', 0),
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T001003', 'T001', 2, 5, 8, 3, 3, '站点C', '站点D', '2024-01-09 11:00:00', '2024-01-09 12:30:00', '2024-01-09 10:30:00', 10),
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T001004', 'T001', 3, 8, 10, 4, 1, '站点D', '站点E', '2024-01-09 12:30:00', '2024-01-09 14:00:00', '2024-01-09 12:00:00', 3),
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T001005', 'T001', 0, 11, 12, 5, 2, '站点E', '站点F', '2024-01-09 14:00:00', '2024-01-09 15:30:00', '2024-01-09 13:30:00', 8),
+
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T002001', 'T002', 1, 4, 5, 1, 2, '站点A', '站点B', '2024-01-09 09:00:00', '2024-01-09 10:30:00', '2024-01-09 08:30:00', 2),
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T002002', 'T002', 2, 7, 9, 2, 1, '站点B', '站点C', '2024-01-09 10:30:00', '2024-01-09 12:00:00', '2024-01-09 10:00:00', 5),
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T002003', 'T002', 3, 10, 11, 3, 3, '站点C', '站点D', '2024-01-09 12:00:00', '2024-01-09 13:30:00', '2024-01-09 11:30:00', 0),
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T002004', 'T002', 0, 2, 2, 4, 1, '站点D', '站点E', '2024-01-09 13:30:00', '2024-01-09 15:00:00', '2024-01-09 13:00:00', 0),
+    ('45bfb2523e3ecf578c351bbaab54c297', 'T002005', 'T002', 1, 6, 7, 5, 2, '站点E', '站点F', '2024-01-09 15:00:00', '2024-01-09 16:30:00', '2024-01-09 14:30:00', 12);
 
 -- 订单表
 
@@ -168,7 +202,7 @@ CREATE TABLE `railway_ticket_refund`
     `user_id` VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户id',
     `order_id` bigint(20) UNSIGNED NOT NULL COMMENT '关联的订单Id',
     `refund_amount` DECIMAL(20,2) COMMENT '退款金额',
-    `refund_reason` VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '退款原因',
+    `refund_reason` VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  COMMENT '退款原因',
     `refund_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL COMMENT '退款申请时间',
     `refund_status` tinyint(1) COMMENT '退款状态', # 0：待审核 1：审核通过 2：审核不通过 3：已退款
     `admin_comment` VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '管理员备注',

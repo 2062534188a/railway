@@ -6,7 +6,11 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 车票信息表
@@ -14,6 +18,9 @@ import lombok.Data;
  */
 @TableName(value ="railway_ticket")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Ticket implements Serializable {
     /**
      * 主键Id

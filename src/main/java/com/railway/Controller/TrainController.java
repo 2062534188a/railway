@@ -1,9 +1,11 @@
 package com.railway.Controller;
 
+import com.railway.DTO.TrainRouteDTO;
 import com.railway.Utils.Result;
 import com.railway.service.RouteService;
 import com.railway.service.TrainService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +28,9 @@ public class TrainController {
     @PostMapping("/queryTrainInformation")
     public Result queryTrainInformation(){
         return routeService.queryTrainInformation();
+    }
+    @PostMapping("/queryTrainByRoute")
+    public Result queryTrainByRoute(@RequestBody TrainRouteDTO trainRouteDTO){
+        return routeService.queryTrainByRoute(trainRouteDTO);
     }
 }

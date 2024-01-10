@@ -1,4 +1,4 @@
-package com.railway.VO;
+package com.railway.DTO;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class TicketVO {
+public class TicketRefundDTO {
     /**
      * 车票编号
      */

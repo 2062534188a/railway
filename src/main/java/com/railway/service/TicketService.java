@@ -1,5 +1,7 @@
 package com.railway.service;
 
+import com.railway.DTO.BookingTicketsDTO;
+import com.railway.DTO.TicketRefundDTO;
 import com.railway.Utils.Result;
 import com.railway.entity.Ticket;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -22,5 +24,17 @@ public interface TicketService extends IService<Ticket> {
      */
     Result queryTicket();
 
+    /**
+     * 预订车票接口
+     * @param bookingTicketsDTO 车票信息实体类
+     * @return 预订回调
+     */
+    Result BookingTickets(BookingTicketsDTO bookingTicketsDTO);
 
+    /**
+     * 提交退票接口
+     * @param ticketRefundDTO 退票信息
+     * @return 退票回调
+     */
+    Result TicketRefund(TicketRefundDTO ticketRefundDTO);
 }

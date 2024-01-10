@@ -89,6 +89,16 @@ CREATE TABLE `railway_train`
 )ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci row_format=DYNAMIC COMMENT '列车信息表';
 
 create index user_id_index on railway_train (train_num);
+
+INSERT INTO `railway_train`
+(`train_num`, `train_type`, `train_business_seats`, `train_business_seats_price`,
+ `train_superior_seats`, `train_superior_seats_price`, `train_first_seats`, `train_first_seats_price`,
+ `train_second_seats`, `train_second_seats_price`, `train_state`, `train_service_life`)
+VALUES
+    ('T001', 0, 10, 500, 20, 300, 50, 200, 100, 100, 1, 10),
+    ('T002', 1, 5, 600, 15, 350, 30, 250, 80, 150, 1, 8);
+
+
 -- 列车座位表
 
 CREATE TABLE `railway_seat`

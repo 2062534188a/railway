@@ -19,7 +19,8 @@ public class MvcConfig implements WebMvcConfigurer {
                 "/api-docs",
                 "/api-docs/**",
                 "/doc.html/**",
-                "/api/user/login"
+                "/api/user/login",
+                "/api/user/register"
         };
         registry.addInterceptor(new LoginInterceptor()).excludePathPatterns(excludePathPatterns);
     }

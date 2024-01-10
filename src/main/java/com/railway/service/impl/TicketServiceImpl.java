@@ -133,6 +133,11 @@ public class TicketServiceImpl extends ServiceImpl<TicketMapper, Ticket>
         Order order = orderMapper.selectOne(new QueryWrapper<Order>().eq("order_sn", ticketRefundDTO.getTicketNumber()));
         TicketRefund ticketRefund = new TicketRefund(null,userId, order.getId(), order.getOrderPrice(), null, LocalDateTime.now(), 0, null);
         ticketRefundMapper.insert(ticketRefund);
+        //查询出需要退款的车票
+        Ticket ticket = ticketMapper.selectOne(new QueryWrapper<Ticket>().eq("ticket_number", ticketRefundDTO.getTicketNumber()));
+        //设置车票状态为退款中
+        ticket.setOrderStatus(6);
+        ticketMapper.updateById(ticket);
         return Result.success("提交审核成功",null);
     }
 

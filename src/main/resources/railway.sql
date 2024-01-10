@@ -110,7 +110,14 @@ INSERT INTO railway_seat (train_num, carriage_number,  carriage_type, row_a_seat
                         ('T001', 5, 3, 0, 0, 0,0,0),('T001', 6, 3, 0, 0, 0,0,0),
                         ('T001', 7, 3, 0, 0, 0,0,0),('T001', 8, 3, 0, 0, 0,0,0),
                         ('T001', 9, 3, 0, 0, 0,0,0),('T001', 10,3, 0, 0, 0,0,0),
-                        ('T001', 11,3, 0, 0, 0,0,0),('T001', 12,3, 0, 0, 0,0,0);
+                        ('T001', 11,3, 0, 0, 0,0,0),('T001', 12,3, 0, 0, 0,0,0),
+                        ('T002', 1, 0, 0, 0, 0,0,0),('T002', 2, 1, 0, 0, 0,0,0),
+                        ('T002', 3, 2, 0, 0, 0,0,0),('T002', 4, 2, 0, 0, 0,0,0),
+                        ('T002', 5, 3, 0, 0, 0,0,0),('T002', 6, 3, 0, 0, 0,0,0),
+                        ('T002', 7, 3, 0, 0, 0,0,0),('T002', 8, 3, 0, 0, 0,0,0),
+                        ('T002', 9, 3, 0, 0, 0,0,0),('T002', 10,3, 0, 0, 0,0,0),
+                        ('T002', 11,3, 0, 0, 0,0,0),('T002', 12,3, 0, 0, 0,0,0)
+                                                                                                                                      ;
 
 
 CREATE TABLE `railway_route`
@@ -152,7 +159,7 @@ CREATE TABLE `railway_ticket`
     `carriage_number` int(3) COMMENT '车厢号',
     `seat_number` int(3) NOT NULL COMMENT '座位号',
     `row_seat` int(3) NOT NULL COMMENT '座位列',
-    `order_status` int(5) COMMENT '车票状态', # 0:预定失败 1:预订中 2:预订成功 3:候车中 4:行驶中 5:订单结束
+    `order_status` int(5) COMMENT '车票状态', # 0:预定失败 1:预订中 2:预订成功 3:候车中 4:行驶中 5:订单结束 6:退款中
     `departure_point` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '发车站点',
     `target_point` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '目标站点',
     `departure_time` TIMESTAMP NOT NULL COMMENT '发车时间',

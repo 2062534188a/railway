@@ -18,6 +18,10 @@ public class OrderVO {
      */
     private BigDecimal orderPrice;
     /**
+     * 订单号
+     */
+    private String orderSn;
+    /**
      * 真实姓名
      */
     private String userIdName;

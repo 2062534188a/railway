@@ -31,7 +31,7 @@ CREATE TABLE `railway_user`  (
         `user_mail_state` tinyint(1)   COMMENT '邮箱状态',# 1:正常 0:异常
         `user_sex` tinyint(1) DEFAULT 0 NOT NULL COMMENT '性别',# 0:男 1:女
         `user_vip` tinyint(1) DEFAULT 1 NOT NULL COMMENT 'vip等级',# 1:二星会员 2:三星会员 3:四星会员 4:五星会员
-        `user_vip_integral` bigint(20) DEFAULT 0 NOT NULL COMMENT 'vip积分',
+        `user_vip_integral` bigint(20) DEFAULT 3000 NOT NULL COMMENT 'vip积分',
         `user_type` tinyint(1) DEFAULT 0 NOT NULL COMMENT '用户类型',# 0:成人票 1:儿童 2:学生票 3:残疾军人
         `user_permissions` tinyint(1) DEFAULT 0 NOT NULL COMMENT '用户权限',# -2:账号注销/封禁 -1:状态异常  0:用户 1:管理员
         `user_login_ip` VARCHAR(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '登录时IP',
@@ -46,7 +46,7 @@ CREATE TABLE `railway_user`  (
 CREATE INDEX user_name_index ON railway_user (user_name(20),user_pwd(20));
 
 # 测试数据
-INSERT INTO `railway_user` VALUES (null,'45bfb2523e3ecf578c351bbaab54c297','admin1','e00cf25ad42683b3df678c61f42c6bda','sugiyamar',020686321821298812,null,957,'(116) 621 9100',1,'rinsugiyama@outlook.com',1,0,1,3000,0,0,'251.119.37.18','2005-01-19','2023-12-01 19:38:19','2023-12-01 19:57:39');
+INSERT INTO `railway_user` VALUES (null,'45bfb2523e3ecf578c351bbaab54c297','admin1','e00cf25ad42683b3df678c61f42c6bda','sugiyamar',020686321821298812,null,957,'(116) 621 9100',1,'rinsugiyama@outlook.com',1,0,1,3000,0,1,'251.119.37.18','2005-01-19','2023-12-01 19:38:19','2023-12-01 19:57:39');
 
 
 -- vip等级表
